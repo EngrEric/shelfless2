@@ -4,6 +4,7 @@ import Layout from "./components/app/Layout";
 import Home from "./components/app/Home";
 import NotFound from "./NotFound";
 import RecentFinds from "./components/recentFinds/RecentFinds";
+import ProductDetails from "./components/ListProducts/ProductDetails";
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
         <Switch>
           <Route component={RecentFinds} path="/recent" />
           <Route component={Home} exact path="/" />
+          <Route component={ProductDetails} path="/details/:id" />
           <Route component={NotFound} />
         </Switch>
       </Layout>
