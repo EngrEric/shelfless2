@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Navbar from "../app/NavBar";
 import RecentCard from "./RecentCards";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: "left",
     marginLeft: "calc(100% - 95%)",
@@ -15,9 +15,12 @@ const useStyles = makeStyles({
       textDecoration: "none",
     },
   },
-});
+  link: {
+    textDecoration: "none",
+  },
+}));
 
-const data = [
+const products = [
   {
     productName: "Paper Towels",
     timeFound: "20mins",
@@ -25,6 +28,7 @@ const data = [
     location: "247 E 18th St",
     stockStatus: "FULL",
     stockStatusColor: "green",
+    id: "1",
   },
   {
     productName: "Fine Towels",
@@ -33,6 +37,7 @@ const data = [
     location: "247 E 18th St",
     stockStatus: "MEDIUM",
     stockStatusColor: "orange",
+    id: "2",
   },
   {
     productName: "Wood Towels",
@@ -41,27 +46,83 @@ const data = [
     location: "247 E 18th St",
     stockStatus: "LOW",
     stockStatusColor: "red",
+    id: "3",
   },
 ];
 
-const RecentFinds = ({ history }) => {
-  const classes = useStyles();
+const RecentFinds = ({ history }, props) => {
+  const [foundProducts, setNewProducts] = useState([...products]);
+  const [isSearching, setSearching] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const classes = useStyles(props);
 
+  // TODO: use the search term from state to make a recent search.
   const { state } = history.location;
-  console.log(state);
+
+  const handleChange = ({ target }) => {
+    if (target.value.length > 0) {
+      setSearching(true);
+    } else {
+      setSearching(false);
+    }
+    const itemsFound = products.filter((elem) => {
+      const currentSearchTerm = RegExp(target.value.toLowerCase(), "g");
+      const currentProductName = elem.productName.toLowerCase();
+      return currentSearchTerm.test(currentProductName);
+    });
+
+    setNewProducts(itemsFound);
+  };
+
+  useEffect(() => {
+    if (isSearching && foundProducts.length < 1) {
+      setLoading(true);
+      console.log("yes");
+    } else {
+      setLoading(false);
+      console.log("no");
+    }
+    if (isLoading) {
+      setTimeout(() => {
+        if (isLoading && foundProducts.length < 1) {
+          setLoading(false);
+        }
+      }, 1000);
+    }
+  }, [isSearching, foundProducts]);
+
   return (
     <div>
-      <Navbar bgColor="#F2F2F2" minHeight={128} color="#27AE60" />
+      <Navbar
+        handleChange={handleChange}
+        bgColor="#F2F2F2"
+        minHeight={128}
+        color="#27AE60"
+      />
       <div style={{ margin: "150px auto" }}>
         <Typography variant="h5" className={classes.title}>
           Recent Finds <Link to="/"> (OctLand, CA)</Link>
         </Typography>
-        <Grid spacing={3} container justify="center">
-          {data.map((val, index) => (
-            <Grid key={index} item sm={12} lg={4} md={4}>
-              <RecentCard data={val} />
-            </Grid>
-          ))}
+        <Grid spacing={2} container justify={"space-around"}>
+          {isLoading ? (
+            <h1>Loading</h1>
+          ) : foundProducts.length < 1 ? (
+            <h1>No item found</h1>
+          ) : (
+            foundProducts.map((val, index) => (
+              <Grid key={index} item xs={"auto"} lg={"auto"} md={"auto"}>
+                <Link
+                  to={{
+                    pathname: `/details/${val.id}`,
+                    state: { data: val },
+                  }}
+                  className={classes.link}
+                >
+                  <RecentCard data={val} />
+                </Link>
+              </Grid>
+            ))
+          )}
         </Grid>
       </div>
     </div>

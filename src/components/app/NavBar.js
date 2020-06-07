@@ -60,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = (props) => {
-  const { history } = props;
+  const { history, handleChange } = props;
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appbar}>
+      <AppBar position="fixed" className={classes.appbar} elevation={0}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -90,6 +90,7 @@ const Navbar = (props) => {
         </Toolbar>
         <Grid className={classes.grid}>
           <Input
+            onChange={handleChange}
             className={classes.search}
             placeholder="Enter Location"
             fullWidth
@@ -108,7 +109,7 @@ const Navbar = (props) => {
             <Button title="" style={{ paddingLeft: 0 }} startIcon={<Add />}>
               Report a new find
             </Button>
-            <Button style={{ scrollPaddingRight: 0 }}>Donate</Button>
+            <Button>Donate</Button>
           </div>
         </Grid>
       </AppBar>

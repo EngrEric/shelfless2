@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import {
   CardContent,
   CardActions,
-  Button,
+  Paper,
   Typography,
   CardHeader,
   IconButton,
@@ -12,10 +12,11 @@ import {
 
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import "./styles.css";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: "325px",
+    minWidth: "335px",
     backgroundColor: "#F2F2F2",
   },
   head: {
@@ -34,11 +35,12 @@ const useStyles = makeStyles({
   stock: {
     padding: 16,
   },
-  button: {
+  paper: {
     backgroundColor: (props) => props.data.stockStatusColor,
+    padding: theme.spacing(0.5, 2),
     color: "#fff",
   },
-});
+}));
 
 function RecentCard(props) {
   const {
@@ -51,7 +53,7 @@ function RecentCard(props) {
   const classes = useStyles(props);
 
   return (
-    <Card className={classes.root}>
+    <Card className={`${classes.root} card`}>
       <CardHeader
         className={classes.head}
         title={productName}
@@ -73,9 +75,9 @@ function RecentCard(props) {
       <span className={classes.stock}>Stock status</span>
 
       <CardActions className={classes.footer}>
-        <Button className={classes.button} variant="contained" size="small">
+        <Paper className={classes.paper} variant="elevation" elevation={0}>
           {stockStatus}
-        </Button>
+        </Paper>
         <div>
           <IconButton>
             <ArrowUpward />
