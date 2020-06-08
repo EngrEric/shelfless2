@@ -4,6 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Navbar from "../app/NavBar";
 import RecentCard from "./RecentCards";
+import img1 from "../../images/1.jpg";
+import img2 from "../../images/2.jpg";
+import img3 from "../../images/3.jpg";
+import img4 from "../../images/4.jpg";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -28,6 +32,7 @@ const products = [
     location: "247 E 18th St",
     stockStatus: "FULL",
     stockStatusColor: "green",
+    images: [img1, img2, img3, img4],
     id: "1",
   },
   {
@@ -37,6 +42,7 @@ const products = [
     location: "247 E 18th St",
     stockStatus: "MEDIUM",
     stockStatusColor: "orange",
+    images: [img1, img2, img3, img4],
     id: "2",
   },
   {
@@ -46,6 +52,7 @@ const products = [
     location: "247 E 18th St",
     stockStatus: "LOW",
     stockStatusColor: "red",
+    images: [img1, img2, img3, img4],
     id: "3",
   },
 ];
@@ -111,15 +118,21 @@ const RecentFinds = ({ history }, props) => {
           ) : (
             foundProducts.map((val, index) => (
               <Grid key={index} item xs={"auto"} lg={"auto"} md={"auto"}>
-                <Link
-                  to={{
-                    pathname: `/details/${val.id}`,
-                    state: { data: val },
-                  }}
-                  className={classes.link}
-                >
-                  <RecentCard data={val} />
-                </Link>
+                <RecentCard
+                  animate
+                  title={
+                    <Link
+                      to={{
+                        pathname: `/details/${val.id}`,
+                        state: { data: val },
+                      }}
+                      className={classes.link}
+                    >
+                      {val.productName}
+                    </Link>
+                  }
+                  data={val}
+                />
               </Grid>
             ))
           )}

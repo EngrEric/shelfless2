@@ -13,6 +13,7 @@ import {
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,10 +54,10 @@ function RecentCard(props) {
   const classes = useStyles(props);
 
   return (
-    <Card className={`${classes.root} card`}>
+    <Card className={props.animate ? `${classes.root} card` : classes.root}>
       <CardHeader
         className={classes.head}
-        title={productName}
+        title={props.title}
         action={timeFound}
         titleTypographyProps={{ className: classes.headTitle }}
       ></CardHeader>
