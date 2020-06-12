@@ -5,7 +5,7 @@ import Home from "./components/app/Home";
 import NotFound from "./NotFound";
 import RecentFinds from "./components/recentFinds/RecentFinds";
 import ProductDetails from "./components/ListProducts/ProductDetails";
-import ReportAFind from "./components/ReportAFind/ReportAFind";
+import ReportAFind from "./components/ReportAFind/reportAFind";
 
 const Routes = () => {
   return (
