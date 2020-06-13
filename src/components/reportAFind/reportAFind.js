@@ -8,7 +8,9 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  Divider
+  Divider,
+  Input,
+  Button
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Items } from "./FindData";
@@ -53,6 +55,16 @@ const ReportAFind = () => {
   return (
     <div className={classes.main}>
       <Grid item xs={12} md={6}>
+        <div>
+          <Input
+            placeholder="Enter Location"
+            fullWidth={true}
+          />
+
+          <Button>
+            Get Started
+          </Button>
+        </div>
         <Typography className={classes.title}>
             <h3>Products (Choose at least 1)</h3> 
         </Typography>
