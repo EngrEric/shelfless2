@@ -8,6 +8,7 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
+  Divider
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Items } from "./FindData";
@@ -23,11 +24,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     margin: theme.spacing(4, 0, 2),
     variant: "h1"
-  },
-  hr:{
-    border: "none",
-    background: "rgba(128,128,128, 0.5)",
-    height: "1px"
   },
   title1: {
     margin: theme.spacing(8, 0, 2, 0),
@@ -56,13 +52,11 @@ const ReportAFind = () => {
 
   return (
     <div className={classes.main}>
-      <div>
-      </div>
       <Grid item xs={12} md={6}>
         <Typography className={classes.title}>
-            Products (Choose at least 1) 
-            <br/><hr className={classes.hr}/>
+            <h3>Products (Choose at least 1)</h3> 
         </Typography>
+        <Divider />
         <div className={classes.list}>
           <List dense={false}>
             {Items.map(({title }, index) => {
