@@ -64,8 +64,8 @@ const ProductDetails = (props) => {
           defaultZoom={props.zoom}
         >
           <div
-            lat={59.955413}
-            lng={30.337844}
+            lat={props.lat}
+            lng={props.lng}
             // text="My Marker"
           />
         </GoogleMapReact>

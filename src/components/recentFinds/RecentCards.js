@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import {
@@ -8,6 +8,7 @@ import {
   Typography,
   CardHeader,
   IconButton,
+  Badge,
 } from "@material-ui/core";
 
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
@@ -45,13 +46,26 @@ const useStyles = makeStyles((theme) => ({
 
 function RecentCard(props) {
   const {
+    id,
     productName,
     timeFound,
     storeName,
     location,
     stockStatus,
   } = props.data;
+  // id is a place holder for fav counts
+  const [counter, setCounter] = useState(+id);
+  const [isCliked, toggleClick] = useState(false);
   const classes = useStyles(props);
+
+  const handleAddToFav = () => {
+    toggleClick(!isCliked);
+    isCliked ? setCounter(counter - 1) : setCounter(counter + 1);
+
+    // Dispatch an action that adds the item to fav
+    // then update the fav icon with latest counter
+    //
+  };
 
   return (
     <Card className={props.animate ? `${classes.root} card` : classes.root}>
@@ -83,8 +97,10 @@ function RecentCard(props) {
           <IconButton>
             <ArrowUpward />
           </IconButton>
-          <IconButton>
-            <FavoriteBorder />
+          <IconButton onClick={handleAddToFav}>
+            <Badge badgeContent={counter} color="primary">
+              <FavoriteBorder />
+            </Badge>
           </IconButton>
         </div>
       </CardActions>
