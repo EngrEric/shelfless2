@@ -7,7 +7,6 @@ import Navbar from "./NavBar";
 const Home = ({ history }) => {
   const [query, setQuery] = useState("");
   const styles = useStyles();
-  // https://api.npower.fmhds.gov.ng/api/v1/trainee/auth/register
   return window.screen.width > 960 ? (
     <div className={styles.notMobile}>
       <h1>Screens above 960 is not allowed, only mobile screens is allowed.</h1>
