@@ -7,8 +7,12 @@ import Navbar from "./NavBar";
 const Home = ({ history }) => {
   const [query, setQuery] = useState("");
   const styles = useStyles();
-
-  return (
+  // https://api.npower.fmhds.gov.ng/api/v1/trainee/auth/register
+  return window.screen.width > 960 ? (
+    <div className={styles.notMobile}>
+      <h1>Screens above 960 is not allowed, only mobile screens is allowed.</h1>
+    </div>
+  ) : (
     <div>
       <Navbar color="white" display="none" bgColor="#27AE60" />
       <div className={styles.headerImage} />
