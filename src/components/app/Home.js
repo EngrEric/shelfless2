@@ -9,7 +9,10 @@ const Home = ({ history }) => {
   const styles = useStyles();
   return window.screen.width > 960 ? (
     <div className={styles.notMobile}>
-      <h1>Screens above 960 is not allowed, only mobile screens is allowed.</h1>
+      <h1>
+        Screens from 960 and below is not allowed, only mobile screens is
+        allowed.
+      </h1>
     </div>
   ) : (
     <div>
