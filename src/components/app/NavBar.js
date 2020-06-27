@@ -113,6 +113,7 @@ const Navbar = (props) => {
           </div>
         </Grid>
       </AppBar>
+      {props.children}
     </div>
   );
 };
