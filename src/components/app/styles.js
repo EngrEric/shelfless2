@@ -8,6 +8,24 @@ const useStyles = makeStyles({
     background: `url(${homeImage})no-repeat`,
     backgroundSize: "cover",
   },
+  notMobile: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    width: "100vw",
+    "& h1": {
+      padding: "20% 5%",
+      alignSelf: "center",
+
+      fontSize: "2em",
+      color: "gray",
+    },
+    // textAlign: "center",
+    // position: "fixed",
+    // alignContent: "center",
+    // top: "20vh",
+  },
   headerButtons: {
     position: "absolute",
     top: window.screen.height * 0.2,
