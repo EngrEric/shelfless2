@@ -10,10 +10,16 @@ import {
   Grid,
   Divider,
   Input,
+  TextField,
   Button
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import 
+{ makeStyles,  
+  createMuiTheme,
+  Theme,
+  ThemeProvider,} from "@material-ui/core/styles";
 import { Items } from "./FindData";
+import { green, purple } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     padding: theme.spacing(0, 2, 2, 0),
   },
-
+  continueButton:{
+    backgroundColor: '#0069d9',
+  },
   listText: {
     letterSpacing: 10,
     padding: theme.spacing(0, 0, 0, 1),
@@ -51,19 +59,17 @@ const useStyles = makeStyles((theme) => ({
 
 const ReportAFind = () => {
   const classes = useStyles();
+  const theme = createMuiTheme({
+    palette: {
+      primary: green,
+    },
+  });
 
   return (
     <div className={classes.main}>
       <Grid item xs={12} md={6}>
         <div>
-          <Input
-            placeholder="Enter Location"
-            fullWidth={true}
-          />
-
-          <Button>
-            Get Started
-          </Button>
+        <TextField id="outlined-basic" variant="outlined" fullWidth/>
         </div>
         <Typography className={classes.title}>
             <h3>Products (Choose at least 1)</h3> 
@@ -88,6 +94,14 @@ const ReportAFind = () => {
               );
             })}
           </List>
+          
+            <Button className={classes.continueButton}
+              variant="contained"
+              color="primary"
+              fullWidth>
+              Continue >
+            </Button>
+          
         </div>
       </Grid>
     </div>
