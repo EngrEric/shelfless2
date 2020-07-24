@@ -14,12 +14,9 @@ import {
   Button
 } from "@material-ui/core";
 import 
-{ makeStyles,  
-  createMuiTheme,
-  Theme,
-  ThemeProvider,} from "@material-ui/core/styles";
+{ makeStyles,} from "@material-ui/core";
 import { Items } from "./FindData";
-import { green, purple } from '@material-ui/core/colors';
+import Navbar from "../app/NavBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(8, 0, 2, 0),
     textAlign: "justify",
   },
+  titleMini: {
+    margin: theme.spacing(13, 0, 0, 0),
+  },
   main: {
     margin: "10px 20px",
   },
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2, 2, 0),
   },
   continueButton:{
-    backgroundColor: '#0069d9',
+    background: theme.primary
   },
   listText: {
     letterSpacing: 10,
@@ -59,16 +59,15 @@ const useStyles = makeStyles((theme) => ({
 
 const ReportAFind = () => {
   const classes = useStyles();
-  const theme = createMuiTheme({
-    palette: {
-      primary: green,
-    },
-  });
 
   return (
     <div className={classes.main}>
+       <Navbar color="white" display="none" bgColor="#27AE60" />
       <Grid item xs={12} md={6}>
         <div>
+        <Typography className={classes.titleMini}>
+            <h4>Store Location</h4> 
+        </Typography>
         <TextField id="outlined-basic" variant="outlined" fullWidth/>
         </div>
         <Typography className={classes.title}>
@@ -79,14 +78,18 @@ const ReportAFind = () => {
           <List dense={false}>
             {Items.map(({title }, index) => {
               return (
-                <ListItem key={index} className={classes.listItem}>
-                    <FormControl component="fieldset">
+                <ListItem key={index} className={classes.listItem} fullWidth>
+                    <FormControl 
+                    component="fieldset"
+                    fullWidth
+                    className={classes.listText}>
                         <FormGroup aria-label="position" row>
                             <FormControlLabel
                             value="end"
                             control={<Checkbox color="primary" />}
                             label={<h3>{title} </h3>}
                             labelPlacement="end"
+                            fullWidth
                             />
                         </FormGroup>
                         </FormControl>
@@ -94,14 +97,12 @@ const ReportAFind = () => {
               );
             })}
           </List>
-          
             <Button className={classes.continueButton}
               variant="contained"
               color="primary"
               fullWidth>
               Continue >
-            </Button>
-          
+            </Button>          
         </div>
       </Grid>
     </div>
