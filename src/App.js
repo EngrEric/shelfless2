@@ -5,9 +5,8 @@ import Routes from "./Routes";
 export default function App() {
   return (
     <React.Fragment>
-      <CssBaseline>
-        <Routes />
-      </CssBaseline>
+      <CssBaseline />
+      <Routes />
     </React.Fragment>
   );
 }
