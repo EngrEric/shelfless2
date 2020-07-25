@@ -10,17 +10,18 @@ import {
   FormControlLabel,
   Grid,
   Divider,
-  Input,
   Box,
   IconButton,
   TextField,
-  Button
+  Button,
+  ThemeProvider
 } from "@material-ui/core";
-import { ArrowBack } from "@material-ui/icons";
+import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import 
 { makeStyles,} from "@material-ui/core";
 import { Items } from "./FindData";
 import Navbar from "../app/NavBar";
+import theme from "../Theme"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,7 +67,8 @@ const ReportAFind = (props) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <ThemeProvider>
+      <div>
       <Navbar display="none" bgColor="#F2F2F2" color="#27AE60">
         <Box
           borderColor="red"
@@ -75,16 +77,20 @@ const ReportAFind = (props) => {
           marginTop="70px"
           padding="15px 5px"
           display="flex"
-          alignItems="center"
+          justifyContent="space-between"
+          alignItems="right"
           height="50px"
           width="100%"
           color="#fff"
           fullWidth
         >
-          <IconButton onClick={() => history.goBack()}>
-            <ArrowBack htmlColor="#fff" />
-          </IconButton>
-          <Typography>Report A Find</Typography>
+          <div style = {{display: "flex"}}>
+            <IconButton onClick={() => history.goBack()}>
+              <ArrowBack htmlColor="#fff" />
+            </IconButton>
+            <Typography >Report A Find</Typography>
+          </div>
+          <Typography>Continue</Typography>
         </Box>
       </Navbar>
       <div className={classes.main}>
@@ -98,7 +104,6 @@ const ReportAFind = (props) => {
           <Typography className={classes.title}>
               <h3>Products (Choose at least 1)</h3> 
           </Typography>
-          <Typography className={classes.titleRight}>Continue</Typography>
           <Divider />
           <div className={classes.list}>
             <List dense={false}>
@@ -127,12 +132,13 @@ const ReportAFind = (props) => {
                 variant="contained"
                 color="primary"
                 fullWidth>
-                Continue >
+                Continue <ArrowForward />
               </Button>          
           </div>
         </Grid>
       </div>
     </div>
+    </ThemeProvider>
   );
 };
 
