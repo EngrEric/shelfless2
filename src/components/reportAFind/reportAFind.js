@@ -17,14 +17,11 @@ import {
   ThemeProvider
 } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
-import 
-{ makeStyles,} from "@material-ui/core";
 import { Items } from "./FindData";
 import Navbar from "../app/NavBar";
-import theme from "../Theme"
+import { makeStyles} from "@material-ui/core";
 
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) =>({
   root: {
     flexGrow: 1,
     maxWidth: 900,
@@ -49,9 +46,6 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     padding: theme.spacing(0, 2, 2, 0),
   },
-  continueButton:{
-    background: theme.primary
-  },
   listText: {
     letterSpacing: 10,
     padding: theme.spacing(0, 0, 0, 1),
@@ -61,10 +55,11 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
+
 }));
 const ReportAFind = (props) => {
-  const history = useHistory();
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <ThemeProvider>
@@ -90,7 +85,7 @@ const ReportAFind = (props) => {
             </IconButton>
             <Typography >Report A Find</Typography>
           </div>
-          <Typography>Continue</Typography>
+          <Typography style={{marginRight: "1em"}}>Continue</Typography>
         </Box>
       </Navbar>
       <div className={classes.main}>
@@ -132,7 +127,7 @@ const ReportAFind = (props) => {
                 variant="contained"
                 color="primary"
                 fullWidth>
-                Continue <ArrowForward />
+                <span style={{color: "#fff"}}>Continue</span> <ArrowForward style={{color: "#fff"}} />
               </Button>          
           </div>
         </Grid>
