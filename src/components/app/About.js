@@ -11,29 +11,21 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import { makeStyles } from "@material-ui/styles";
-
-const green = "#27ae60";
-const lightGrey = "#f2f2f2";
-const darkGrey = "#e0e0e0";
-const lightred = "#eb5757";
-const orange = "#f2994a";
+import { makeStyles, useTheme } from "@material-ui/styles";
 
 const About = () => {
   const useStyles = makeStyles((theme) => ({
-    appBar: {
-      background: green,
-    },
     list: {
       display: "flex",
     },
     listItem: {
       paddingTop: ".75em",
       paddingBottom: ".75em",
+      color: theme.palette.common.lightGrey,
     },
     arrowIcon: {
       fontSize: "1.5rem",
-      color: "#fff",
+      color: theme.palette.common.lightGrey,
       minWidth: 30,
     },
     listItemText: {
@@ -45,7 +37,7 @@ const About = () => {
     btn: {
       fontSize: ".9rem",
       textTransform: "none",
-      background: darkGrey,
+      background: theme.palette.common.darkGrey,
       fontWeight: 600,
       color: "#000",
       minWidth: 50,
@@ -54,25 +46,29 @@ const About = () => {
     captionText: {
       fontSize: ".75rem",
       fontWeight: 500,
-      color: darkGrey,
+      color: theme.palette.common.darkGrey,
     },
     primaryHeading: {
       fontSize: "1.2rem",
       marginBottom: ".3em",
     },
     saveButton: {
-      background: green,
+      background: theme.palette.common.green,
       width: "100%",
-      color: "#fff",
+      color: theme.palette.common.lightGrey,
       padding: "1em auto",
     },
   }));
 
   const classes = useStyles();
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Fragment>
-      <AppBar className={classes.appBar}>
+      <AppBar color="primary">
         <List disablePadding className={classes.list}>
           <ListItem button className={classes.listItem}>
             <ListItemIcon className={classes.arrowIcon}>
@@ -97,7 +93,13 @@ const About = () => {
       </AppBar>
       <div className={classes.listMargin} />
       <Grid container direction="column">
-        <Grid item style={{ background: lightGrey, padding: ".75em 1.5em" }}>
+        <Grid
+          item
+          style={{
+            background: theme.palette.common.lightGrey,
+            padding: ".75em 1.5em",
+          }}
+        >
           <Typography variant="subtitle1">
             Confirm Location &amp; Products
           </Typography>
@@ -109,9 +111,20 @@ const About = () => {
               <Typography variant="h5" className={classes.primaryHeading}>
                 Location
               </Typography>
-              <Divider style={{ background: lightGrey, padding: "1.2px 0" }} />
+              <Divider
+                style={{
+                  background: theme.palette.common.lightGrey,
+                  padding: "1.2px 0",
+                }}
+              />
             </Grid>
-            <Grid item style={{ background: lightGrey, padding: ".85em" }}>
+            <Grid
+              item
+              style={{
+                background: theme.palette.common.lightGrey,
+                padding: ".85em",
+              }}
+            >
               <Grid container direction="row" justify="space-between">
                 <Grid item>
                   <Typography variant="caption" className={classes.caption}>
@@ -144,16 +157,25 @@ const About = () => {
               <Typography variant="h5" className={classes.primaryHeading}>
                 Products
               </Typography>
-              <Divider style={{ background: lightGrey, padding: "1.2px 0" }} />
+              <Divider
+                style={{
+                  background: theme.palette.common.lightGrey,
+                  padding: "1.2px 0",
+                }}
+              />
             </Grid>
             <Grid item>
-              <Grid container direction="row">
+              <Grid
+                container
+                direction={matchesSM ? "column" : "row"}
+                justify="space-between"
+              >
                 <Grid
                   item
-                  xs={12}
-                  sm={6}
+                  md={6}
+                  lg={4}
                   style={{
-                    background: lightGrey,
+                    background: theme.palette.common.lightGrey,
                     padding: ".75em",
                     marginBottom: "1.5em",
                   }}
@@ -178,7 +200,7 @@ const About = () => {
                             variant="contained"
                             className={classes.btn}
                             style={{
-                              background: green,
+                              background: theme.palette.common.green,
                               color: "#fff",
                               padding: "5px 15px",
                             }}
@@ -206,10 +228,10 @@ const About = () => {
                 </Grid>
                 <Grid
                   item
-                  xs={12}
-                  sm={6}
+                  md={6}
+                  lg={4}
                   style={{
-                    background: lightGrey,
+                    background: theme.palette.common.lightGrey,
                     padding: ".75em",
                     marginBottom: "1.5em",
                   }}
@@ -234,7 +256,7 @@ const About = () => {
                             variant="contained"
                             className={classes.btn}
                             style={{
-                              background: lightred,
+                              background: theme.palette.common.red,
                               color: "#fff",
                               padding: "5px 15px",
                             }}
@@ -262,10 +284,10 @@ const About = () => {
                 </Grid>
                 <Grid
                   item
-                  xs={12}
-                  sm={6}
+                  md={6}
+                  lg={4}
                   style={{
-                    background: lightGrey,
+                    background: theme.palette.common.lightGrey,
                     padding: ".75em",
                     marginBottom: "3em",
                   }}
@@ -290,8 +312,8 @@ const About = () => {
                             variant="contained"
                             className={classes.btn}
                             style={{
-                              background: orange,
-                              color: "#fff",
+                              background: theme.palette.common.orange,
+                              color: theme.palette.common.lightGrey,
                               padding: "5px 15px",
                             }}
                           >
