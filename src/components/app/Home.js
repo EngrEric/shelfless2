@@ -3,16 +3,15 @@ import { Input, Button, Typography, } from "@material-ui/core";
 import useStyles from "./styles";
 import ListProducts from "../ListProducts/ListProducts";
 import Navbar from "./NavBar";
+import image1 from "../../images/nextdoor-for-business.png";
 
 const Home = ({ history }) => {
   const [query, setQuery] = useState("");
   const styles = useStyles();
   return window.screen.width > 960 ? (
     <div className={styles.notMobile}>
-      <h1>
-        Screens from 960 and below is not allowed, only mobile screens is
-        allowed.
-      </h1>
+      <h1>Screens above 960 is not allowed, only mobile screens is allowed.</h1>
+      <img className={styles.image1} src={image1} alt="" />
     </div>
   ) : (
     <div>

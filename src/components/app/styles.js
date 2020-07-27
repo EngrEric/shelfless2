@@ -10,12 +10,11 @@ const useStyles = makeStyles({
   },
   notMobile: {
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
     width: "100vw",
     "& h1": {
-      padding: "20% 5%",
+      padding: "1% 5%",
       alignSelf: "center",
 
       fontSize: "2em",
