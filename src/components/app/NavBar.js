@@ -16,7 +16,7 @@ import {
   SearchRounded,
   Add,
 } from "@material-ui/icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = (props) => {
-  const { history, handleChange } = props;
+  const { handleChange } = props;
+  const history = useHistory();
   const classes = useStyles(props);
 
   return (
@@ -106,7 +107,12 @@ const Navbar = (props) => {
               justifyContent: "space-between",
             }}
           >
-            <Button title="" style={{ paddingLeft: 0 }} startIcon={<Add />}>
+            <Button
+              onClick={() => history.push("/reportafind")}
+              title=""
+              style={{ paddingLeft: 0 }}
+              startIcon={<Add />}
+            >
               Report a new find
             </Button>
             <Button>Donate</Button>

@@ -100,10 +100,9 @@ const ReportAFind = (props) => {
             <List dense={false}>
               {Items.map(({ title }, index) => {
                 return (
-                  <ListItem key={index} className={classes.listItem} fullWidth>
+                  <ListItem key={index} className={classes.listItem}>
                     <FormControl
                       component="fieldset"
-                      fullWidth
                       className={classes.listText}
                     >
                       <FormGroup aria-label="position" row>
@@ -112,7 +111,6 @@ const ReportAFind = (props) => {
                           control={<Checkbox color="primary" />}
                           label={<h3>{title} </h3>}
                           labelPlacement="end"
-                          fullWidth
                         />
                       </FormGroup>
                     </FormControl>
