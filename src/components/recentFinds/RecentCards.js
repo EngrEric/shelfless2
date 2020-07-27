@@ -10,7 +10,7 @@ import {
   IconButton,
   Badge,
 } from "@material-ui/core";
-
+import { Favorite } from "@material-ui/icons";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import "./styles.css";
@@ -99,7 +99,7 @@ function RecentCard(props) {
           </IconButton>
           <IconButton onClick={handleAddToFav}>
             <Badge badgeContent={counter} color="primary">
-              <FavoriteBorder />
+              {isCliked ? <Favorite /> : <FavoriteBorder />}
             </Badge>
           </IconButton>
         </div>

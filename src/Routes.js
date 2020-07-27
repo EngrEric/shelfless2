@@ -5,6 +5,7 @@ import Home from "./components/app/Home";
 import NotFound from "./NotFound";
 import RecentFinds from "./components/recentFinds/RecentFinds";
 import ProductDetails from "./components/ListProducts/ProductDetails";
+import ReportAFind from "./components/ReportAFind/reportAFind";
 import About from "./components/app/About";
 
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
           <Route component={About} path="/about" />
           <Route component={Home} exact path="/" />
           <Route component={ProductDetails} path="/details/:id" />
+          <Route component={ReportAFind} path="/reportafind" />
           <Route component={NotFound} />
         </Switch>
       </Layout>
